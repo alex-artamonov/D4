@@ -1,0 +1,39 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+ 
+{% block title %}
+{{ flatpage.title }} Новости
+{% endblock title %}
+ 
+{% block content %}
+<h2>{{ flatpage.title }}</h2>
+    <hr>
+    <h3>Новости и статьи:</h3>
+    <h3>Количество на странице: 
+        {{ news|length }}  
+    </h3>
+    <h3>Наши авторы:</h3>
+    <ul>
+        {% for author in authors_list %}
+        <li>{{ author }}</li>
+        {% endfor %}
+    </ul>
+    <form method="GET">
+        {{ filter.form }} <!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы, придётся делать самому -->
+        <input type="submit" value="Найти">
+    </form>
+    <ul>
+    {% for nws in filter.qs %}
+        <li>
+            <a href="http://localhost:8000/news/{{ nws.pk }}" >
+                {{ nws.Название_статьи|censor }} от {{ nws.Дата_создания|date:'d.m.Y' }}
+            </a>            
+            <br>
+            {{ nws.content|censor|truncatewords:50 }}
+        </li>
+    {% endfor %}
+    </ul>
+<!-- {{ news }} -->
+
+{% endblock content %}
