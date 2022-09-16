@@ -16,7 +16,7 @@
     <h3>Наши авторы:</h3>
     <ul>
         {% for author in authors_list %}
-        <li>{{ author }}</li>
+        <li><a href="{% url 'search_news' %}?Автор__icontains={{ author }}">{{ author }}</a></li>
         {% endfor %}
     </ul>
     <form method="GET">
