@@ -9,5 +9,6 @@ class NewsFilter(FilterSet):
         fields = {
             'Дата_создания': ['gt', 'lt'],
             'Название_статьи': ['icontains'],
-            'Автор': ['icontains']
+            'Автор': ['icontains'],
+            'Имя_пользователя': ['exact']
         }

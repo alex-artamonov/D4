@@ -61,6 +61,8 @@ class NewsF(ListView):
         context['filter'] = NewsFilter(self.request.GET, queryset=self.get_queryset())
         authors_list = [a.user.last_name + ', ' + a.user.first_name for a in Author.objects.all()]
         context['authors_list'] = authors_list
+        authors = Author.objects.all()
+        context['authors'] = authors
         return context
 
     # def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя 
