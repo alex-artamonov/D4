@@ -64,6 +64,7 @@ class NewsF(ListView):
         authors = Author.objects.all()
         context['authors'] = authors
         return context
+        
 
     # def get_context_data(self, **kwargs): # забираем отфильтрованные объекты переопределяя 
     #     # метод get_context_data у наследуемого класса
